@@ -14,10 +14,45 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For 00-1B-63-84-45-E6, the output should be true.
  *
  */
-function isMAC48Address(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function isMAC48Address(n) {
+  const ex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+  const arr = n.split('-').filter(el => el.length === 2).map(el => ex.includes(el[0]) && ex.includes(el[1]) ? el : '').filter(el => el !== '');
+  
+  if(arr.length !== 6) {
+    return false;
+  } else {
+    return true;
+  }
 }
 module.exports = {
   isMAC48Address
 };
+
+/* function isMAC48Addres(n) {
+  const ex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+  const firstCheck = n.split('-');
+  if(firstCheck.length !== 6) {
+    console.log(false);
+  }
+  const secondCheck = firstCheck.filter(el => el.length === 2);
+  if(secondCheck.length !== 6) {
+    console.log(false);
+  }
+
+  const thirdCheck = secondCheck.map(el => ex.includes(el[0]) && ex.includes(el[1]) ? el : '').filter(el => el !== '');
+  console.log(thirdCheck);
+
+  console.log(ex.includes('0'));
+}
+
+isMAC48Addres('00-1B-63-84-45-E6'); */
+
+
+/* function isMAC48Addres(n) {
+  const ex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+  const arr = n.split('-').filter(el => el.length === 2).map(el => ex.includes(el[0]) && ex.includes(el[1]) ? el : '').filter(el => el !== '');
+  
+  console.log(arr);
+}
+
+isMAC48Addres('00-1B-63-84-45-E6'); */
